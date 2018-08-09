@@ -7,6 +7,7 @@ block content
       td Hash: 
       td
         a(href="/tx/" + tx.hash) #{tx.hash}
+        a(href=tx.triggerEventBaseUrl + "/query?action=check_tx_hash&hash="  + tx.hash, target='view_window', role="button")  触发事件
     tr
       td Block hash: 
       td
@@ -47,7 +48,7 @@ block content
     if tx.callInfo
       tr
         td Function Name:
-        td #{tx.callInfo.name}
+        td #{tx.to}.#{tx.callInfo.name}
       tr
         td Parameters:
         td
@@ -73,30 +74,29 @@ block content
       tr
         td Events:
         td
-          for log in tx.logs
-            table.table
-              thead
-                tr
-                  th Name
-                  th Events
-                  th Address
-              tbody
-                tr
-                  td #{log.name}
-                  td
-                    table.table
-                      thead
+            for log in tx.logs
+                table.table
+                    thead
                         tr
-                          th Name
-                          th Type
-                          th Value
-                      tbody
-                        for event in log.events
-                          tr
-                            td #{event.name}
-                            td #{event.type}
-                            td #{event.value}
-                  td #{log.address}
+                            th Event Name
+                            th Event Parameters
+                    tbody
+                        tr
+                            td #{log.decoded.contract}.#{log.name}
+                            td
+                                table.table
+                                    thead
+                                        tr
+                                        th Name
+                                        th Type
+                                        th Value
+                                    tbody
+                                        for event in log.events
+                                            tr
+                                                td #{event.name}
+                                                td #{event.type}
+                                                td #{event.value}
+  
     tr
       td Data:
       td

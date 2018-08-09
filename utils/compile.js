@@ -15,7 +15,7 @@ var yargs = require('yargs')
     type: 'boolean'
   })
   .option('optimize', {
-    describe: 'Enable bytecode optimizer.', 
+    describe: 'Enable bytecode optimizer.',
     type: 'boolean'
   })
   .option('compiler-version', {
@@ -23,8 +23,10 @@ var yargs = require('yargs')
     describe: 'Compiler version to be used.',
     type: 'string'
   })
-  .global([ 'version', 'optimize' ])
-  .version(function() { return solc.version(); })
+  .global(['version', 'optimize'])
+  .version(function () {
+    return solc.version();
+  })
   .showHelpOnFail(false, 'Specify --help for available options')
   .help()
   .demand(1, 'Must provide a file');
@@ -32,13 +34,13 @@ var yargs = require('yargs')
 var argv = yargs.argv;
 var files = argv._;
 
-function abort (msg) {
+function abort(msg) {
   console.log(msg || 'Error occured');
   process.exit(1);
 }
 
 // Kill the process in case that compilation does not terminate
-setTimeout(function() {
+setTimeout(function () {
   process.exit(-1);
 }, 60000);
 
@@ -60,6 +62,6 @@ if (data.compilerVersion) {
   output = solc.compile(data.source, data.optimize ? 1 : 0);
 }
 
-fs.writeFileSync(files[1], JSON.stringify(output) , 'utf-8');
+fs.writeFileSync(files[1], JSON.stringify(output), 'utf-8');
 
 process.exit();

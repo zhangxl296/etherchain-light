@@ -6,7 +6,8 @@ block content
     .col-md-1
       a.btn.btn-primary(href="/block/" + (block.number - 1), role="button") Previous
     .col-md-10.text-center
-      h3 Block #{block.number}
+      h3 Block #{block.number} 
+      a(href=block.triggerEventBaseUrl + "/query?action=check_block&block="  + block.number, target='view_window', role="button")  触发事件
     .col-md-1
       a.btn.btn-primary(href="/block/" + (block.number + 1), role="button") Next
 

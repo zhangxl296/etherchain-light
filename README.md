@@ -7,6 +7,9 @@ While there are several excellent Ethereum blockchain explorers available (ether
 
 A demo instance connected to the Kovan Ethereum testnet is available at [light.etherchain.org](http://light.etherchain.org). An example of a verified contract source can be found at [0x0cf37d2d45427a1380db12c9b352d6f083143817](https://light.etherchain.org/account/0x0cf37d2d45427a1380db12c9b352d6f083143817). An example of a transaction where the corresponding Solidity function name and parameters have been identified can be found at [0x82da63f3d998415b748111e6f1d11051167fb995fdca990acd3cfd5a8b397c20](https://light.etherchain.org/tx/0x82da63f3d998415b748111e6f1d11051167fb995fdca990acd3cfd5a8b397c20)
 
+## Add A NEW FEATURE TO LOOK MORE INSIDE TRANSACTIONS
+* Use contracts abi and address to decode the function call and transaction events/trace for looking inside transactions and a better way to fix the contract problem(Take sha256.sol and directory json for example)
+
 ## Current Features
 * Browse blocks, transactions, accounts and contracts
 * View pending transactions
